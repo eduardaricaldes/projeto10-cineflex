@@ -3,9 +3,9 @@ import styled from "styled-components";
 export default function App() {
   return (
     <div className="container">
-      <div className="header">
+      <EstiloHeader>
         <h1>Cineflex</h1>
-      </div>
+        </EstiloHeader>
       <div className="main">
         <div className="sucesso"></div>
       </div>
