@@ -5,7 +5,7 @@ export default function App() {
     <div className="container">
       <EstiloHeader>
         <h1>Cineflex</h1>
-        </EstiloHeader>
+        git</EstiloHeader>
       <div className="main">
         <div className="sucesso"></div>
       </div>
