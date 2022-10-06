@@ -1,34 +1,49 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios"
+import { useEffect, useState } from "react";
 export default function Rota (){
+  const [postes,setPostes]= useState([])
+  useEffect(()=>{
+    const requisição=axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
+    requisição.then(resposta=>{
+      setPostes(resposta.data);
+    });
+
+    requisição.catch(erro=>{
+      console.log(erro.response.data);
+    });
+
+  },[]);
+  
   return (
     <>
       <EstiloMain>
         <p>Selecionar Filme</p>
         <EstiloPostes>
-         <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg"className="Poster"alt="poster"></img>
+          {postes.map(poste=><Link key={poste.id} to={`/filme/${poste.id}`}><img src={poste.posterURL} alt=""/></Link>)}
         </EstiloPostes>
       </EstiloMain>
     </>
   )
 }
 
-
-
 const EstiloPostes = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   img {
     width: 120px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    margin-right: 46px;
+    margin-bottom: 28px;
   }
 `
 
 const EstiloMain = styled.div`
   padding: 0px 30px 0px 30px;
-  
-    img {
-      width: 120px;
-    }
     p {
       font-family: 'Roboto', sans-serif;
       color: #293845;

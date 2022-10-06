@@ -1,47 +1,45 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-import Rota from "./components/Rota"
+import Rota from "./components/Rota";
 import RotaFilme from "./components/Rota-Filme";
-import RotaSessao from "./components/Rota-Sessão"
+import RotaSessao from "./components/Rota-Sessão";
+import RotaSucesso from "./components/Rota-Sucesso";
 
 export default function App() {
   return (<>
+  <BrowserRouter>
     <EstiloTop>
       <h1>Cineflex</h1>
     </EstiloTop>
-    <Rota></Rota>
-    <RotaFilme></RotaFilme>
-    <RotaSessao></RotaSessao>
-    <RotaSucesso>
-      <RotaSucessoMain>
-        <h2>Pedido Feito com Sucesso!</h2>
-      </RotaSucessoMain>
-    </RotaSucesso>
+    <Routes>
+      <Route path="/" element={<Rota/>}></Route>
+      <Route path="/filme/:IdFilme" element={<RotaFilme />}></Route>
+      <Route path="/sessão" element={< RotaSessao/>}></Route>
+      <Route path="/sucesso" element={<RotaSucesso/>}></Route>
+    </Routes>
+  </BrowserRouter>
+    
    </>
     
   )
 }
 
-const RotaSucesso = styled.div``
-const RotaSucessoMain = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-    h2{
-      font-family: 'Roboto', sans-serif;
-      font-size: 20px;
-      color: #247A6B;
-     }
-`
+
+
+
+
 
 const EstiloTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #c3cfd9;
+
     h1{
       font-family: 'Roboto', sans-serif;
       color: #e8833a;
-      font-size: 20px;
+      font-size: 34px;
+      padding: 22px 10px 22px 18px;
     }
   `
   

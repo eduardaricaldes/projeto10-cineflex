@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-
+import { Link } from "react-router-dom";
 export default function RotaSessao (){
   return(<>
     <EstiloRotaSessao>
@@ -32,7 +31,7 @@ export default function RotaSessao (){
             <input type="number"></input>
           </InformacoeSessao>
             <ButtonReservarAssentos>
-              <button>Reservar Assentos</button>
+              <Link to="/sucesso" ><button>Reservar Assentos</button></Link>
             </ButtonReservarAssentos>
         </EstiloSessaoContainer>
       <EstiloSelecionarFilmesfooter>
@@ -84,7 +83,6 @@ const ButtonReservarAssentos = styled.div`
       height: 42px;
     }
 `
-
 const EstiloSessaoContainer = styled.div`
   padding: 0px 30px 0px 30px;
 `
@@ -105,10 +103,7 @@ const Bolinhas = styled.div`
       margin-right: 76px;
       align-items: center;
     }
-`
-   
-
-
+`  
 const BolinhaAmarelo = styled.div`
   border-radius: 50%;
   height: 26px;
