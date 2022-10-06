@@ -1,30 +1,48 @@
 import styled from "styled-components";
+import Rota from "./components/Rota"
+import RotaFilme from "./components/Rota-Filme";
+import RotaSessao from "./components/Rota-Sessão"
 
 export default function App() {
-  return (
-    <EstiloContainer>
-      <EstiloHeader>
-        <h1>Cineflex</h1>
-        </EstiloHeader>
-      <div className="main">
-        <div className="sucesso"></div>
-      </div>
-      <div className="footer"></div>
-    </EstiloContainer>
-    
-      
+  return (<>
+    <EstiloTop>
+      <h1>Cineflex</h1>
+    </EstiloTop>
+    <Rota></Rota>
+    <RotaFilme></RotaFilme>
+    <RotaSessao></RotaSessao>
+    <RotaSucesso>
+      <RotaSucessoMain>
+        <h2>Pedido Feito com Sucesso!</h2>
+      </RotaSucessoMain>
+    </RotaSucesso>
+   </>
     
   )
 }
-const EstiloContainer = styled.div`
-  .container {
-    background-color: #eef9bf;
-  }
+
+const RotaSucesso = styled.div``
+const RotaSucessoMain = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+    h2{
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      color: #247A6B;
+     }
 `
 
-const EstiloHeader = styled.div `
-    background-color: green;n
+const EstiloTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c3cfd9;
     h1{
-    font-size: 20px;
+      font-family: 'Roboto', sans-serif;
+      color: #e8833a;
+      font-size: 20px;
     }
   `
+  
+
