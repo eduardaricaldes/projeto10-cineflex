@@ -2,24 +2,28 @@ import styled from "styled-components";
 
 export default function App() {
   return (
-    <div className="container">
+    <EstiloContainer>
       <EstiloHeader>
         <h1>Cineflex</h1>
-        git</EstiloHeader>
+        </EstiloHeader>
       <div className="main">
         <div className="sucesso"></div>
       </div>
       <div className="footer"></div>
-    </div>
+    </EstiloContainer>
+    
+      
     
   )
 }
+const EstiloContainer = styled.div`
+  .container {
+    background-color: #eef9bf;
+  }
+`
 
 const EstiloHeader = styled.div `
-  .header{
-    background-color: green;
-
-  }
+    background-color: green;n
     h1{
     font-size: 20px;
     }
