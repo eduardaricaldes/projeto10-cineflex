@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Rota from "./components/Rota";
 import RotaFilme from "./components/Rota-Filme";
-import RotaSessao from "./components/Rota-Sessão";
+import RotaSessao from "./components/Rota-Sessao";
 import RotaSucesso from "./components/Rota-Sucesso";
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Rota/>}></Route>
       <Route path="/filme/:IdFilme" element={<RotaFilme />}></Route>
-      <Route path="/sessão" element={< RotaSessao/>}></Route>
+      <Route path="/sessao/:sessaoId" element={< RotaSessao/>}></Route>
       <Route path="/sucesso" element={<RotaSucesso/>}></Route>
     </Routes>
   </BrowserRouter>

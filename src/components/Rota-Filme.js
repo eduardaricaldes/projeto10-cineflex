@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import{ useParams } from"react-router-dom";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import Sessoes from "./Sessoes";
 export default function RotaFilme (){
   const {IdFilme}= useParams();
 
@@ -18,41 +18,15 @@ export default function RotaFilme (){
     requisicao.catch(erro=>{
       console.log(erro.response.data);
     })
-  },[]);
+  },[IdFilme]);
 
-  function RenderDays(props) {
-    return (
-      <>
-        {
-          props.days.map((day) => {
-            return (<Link to="/sessão"><input type="button">{day}</input></Link>)
-          })
-        }
-      </>
-    )
-  }
-  console.log(filme.days?.length)
+
   return(
     <>
     <EstiloSelecionarFilmes>
         <h1 className="titulo">Selecionar Horario</h1>
         <EstiloSelecionarFilmesMain>
-          {
-            filme.days?.length !== 0 ? 
-            filme.days.map((f) => {
-              const showtimes = f.showtimes
-              return (
-                <>
-                  <p className="data">{f.date} {f.weekday}</p>
-                  <RenderDays days={showtimes}/>
-                </>
-              )
-            }):
-            null
-          }
-          {filme.map(filme=><Link to="/sessão"><input type="button"></input></Link>)}
-
-          <input type="button"></input>
+          <Sessoes filme={filme} />
         </EstiloSelecionarFilmesMain>
         <EstiloSelecionarFilmesfooter>
           {/* <img src={filme.} alt="dsd"> src=</img> */}
