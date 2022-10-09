@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 import{ useParams } from"react-router-dom";
 import { useEffect, useState } from "react";
+
+import Assento from "./Assento";
+
 export default function RotaSessao (){
   const [assentos, setAssentos]= useState([])
   const {sessaoId} = useParams()
@@ -18,7 +21,7 @@ export default function RotaSessao (){
 
      })
   }, [sessaoId])
-  console.log(assentos)
+
   return(<>
     <EstiloRotaSessao>
       <EstiloSessaoContainer>
@@ -29,12 +32,7 @@ export default function RotaSessao (){
               assentos?.seats
                 ?.map(assento=>{
                   return (
-                    <DivGroup key={assento.id}>
-                      <EstiloBotao>
-                        <input  type="checkbox" value={assento.id}/>
-                        <span>{assento.id}</span>
-                      </EstiloBotao>
-                    </DivGroup>
+                    <Assento key={assento.id} assento={assento}/>
                   )
                 })
             }
@@ -167,42 +165,6 @@ const DivBotao = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
 `
-
-const DivGroup = styled.div`
-  overflow: hidden;
-  border-radius: 50%;
-  height: 26px;
-  width: 26px;
-  border: 1px solid #808F9D;
-  background-color: #C3CFD9;
-  margin-right: 8px;
-  margin-top: 18px;
-  float: left;
-`
-
-const EstiloBotao = styled.label`
-  float:left;
-  line-height: 22px;
-  input[type=checkbox]{
-    outline: none;
-    appearance: none;
-    position: absolute;
-    display: none;
-  }
-  input[type=checkbox]:checked {
-    background-color: blue;
-  }
-  input[type=checkbox]:checked + span {
-    background-color:#1AAE9E;
-    border-color: #0E7D71;
-    color: #fff;
-  }
-  span {
-    font-size: 10px;
-    text-align: center;
-    padding: 10px 8px;
-  }
-`;
 
 
 
