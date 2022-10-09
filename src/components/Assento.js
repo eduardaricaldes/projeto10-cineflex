@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Assento({ assento }) {
+export default function Assento({ assento, listaDeAssentos = [], selecionarAssentos = () => {} }) {
 
   if(!assento.isAvailable) {
     return (
@@ -17,7 +17,12 @@ export default function Assento({ assento }) {
   return (
     <DivGroup key={assento.id}>
       <EstiloBotao>
-        <input type="checkbox" value={assento.id}/>
+        <input
+          type="checkbox"
+          value={assento.id}
+          name={assento.name}
+          onChange={event => selecionarAssentos(event)}
+        />
         <span>{assento.name}</span>
       </EstiloBotao>
     </DivGroup>

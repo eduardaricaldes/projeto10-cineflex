@@ -1,6 +1,17 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 export default function RotaSucesso(){
+  const {
+    state
+  } = useLocation();
+  const {
+    nome,
+    cpf,
+    listaDeAssentos = [],
+    filme,
+    sessao,
+    horario,
+  } = state;
   return(
     <>
     <RotaSucessoEstilo>
@@ -10,18 +21,23 @@ export default function RotaSucesso(){
       <RotaSucessoMain>
         <RotaSucessoInfomacoes>
           <h3>Filme e Sessão</h3>
-          <p>Filme</p>
-          <p>Sessão</p>
+          <p>{filme.title}</p>
+          <p>{sessao.date} {horario}</p>
         </RotaSucessoInfomacoes>
         <RotaSucessoInfomacoes>
           <h3>Ingressos</h3>
-          <p>Assento</p>
-          <p>Assentos</p>
+          {
+            listaDeAssentos.map((assento) => {
+              return (
+                <p key={assento.id}>Assento {assento.name}</p>
+              )
+            })
+          }
         </RotaSucessoInfomacoes>
         <RotaSucessoInfomacoes>
           <h3>Comprador</h3>
-          <p>NOME:</p>
-          <p>CPF:</p>
+          <p>NOME: {nome}</p>
+          <p>CPF: {cpf}</p>
         </RotaSucessoInfomacoes>
       </RotaSucessoMain>
       <ButtonVoltarHome>

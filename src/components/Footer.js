@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default function Footer({ filme, day }) {
-  console.log(day)
+
   return (
     <EstiloSelecionarFilmesfooter>
       <img src={filme?.posterURL} alt=""></img>

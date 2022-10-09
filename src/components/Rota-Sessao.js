@@ -1,15 +1,20 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import axios from "axios"
-import{ useParams } from"react-router-dom";
+import{ useNavigate, useParams } from"react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 import Assento from "./Assento";
 
 export default function RotaSessao (){
-  const [assentos, setAssentos]= useState([])
-  const {sessaoId} = useParams()
+  const navigate = useNavigate();
+  const [assentos, setAssentos]= useState({});
+  const {sessaoId} = useParams();
+  const [listaDeAssentos, setListaDeAssentos] = useState([]);
+  const [cpf, setCPF] = useState('');
+  const [nome, setNome] = useState('');
+
+
   useEffect(()=>{
     const promise= axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessaoId}/seats`)
 
@@ -23,6 +28,56 @@ export default function RotaSessao (){
      })
   }, [sessaoId])
 
+  function selecionarAssentos(event) {
+    const checkbox = event.target
+    if(checkbox && checkbox.checked) {
+      const assento = {
+        id: checkbox.value,
+        name: checkbox.name,
+      }
+      listaDeAssentos.push(assento)
+      setListaDeAssentos(listaDeAssentos)
+    }else {
+      const index = listaDeAssentos.findIndex(object => {
+        return object.id === checkbox.value;
+      });
+      listaDeAssentos.splice(index, 1);
+      setListaDeAssentos(listaDeAssentos)
+    }
+  }
+
+  function onChangeNomeComprador(nomeDigitado) {
+    if(nomeDigitado !== '') {
+      setNome(nomeDigitado)
+    }
+  }
+
+  function onChangeCPF(cpfDigitado) {
+    if(cpfDigitado !== '') {
+      setCPF(cpfDigitado)
+    } 
+  }
+
+  function reservarAssentos() {
+    const idsAssentos = listaDeAssentos.map((assento) => assento.id);
+    axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', {
+      ids: idsAssentos,
+      name: nome,
+      cpf: cpf,
+    })
+    navigate('/sucesso', {
+      state: {
+        nome: nome,
+        cpf: cpf,
+        listaDeAssentos: listaDeAssentos,
+        filme: assentos.movie,
+        sessao: assentos.day,
+        horario: assentos.name,
+      }
+    })
+  }
+  
+
   return(<>
     <EstiloRotaSessao>
       <EstiloSessaoContainer>
@@ -33,7 +88,12 @@ export default function RotaSessao (){
               assentos?.seats
                 ?.map(assento=>{
                   return (
-                    <Assento key={assento.id} assento={assento}/>
+                    <Assento
+                      key={assento.id}
+                      assento={assento}
+                      listaDeAssentos={listaDeAssentos}
+                      selecionarAssentos={selecionarAssentos}
+                    />
                   )
                 })
             }
@@ -55,12 +115,12 @@ export default function RotaSessao (){
         </EstiloSessaoMain>
           <InformacoeSessao>
             <p>Nome do Comprador</p>
-            <input type="text"></input>
+            <input type="text" onChange={event => onChangeNomeComprador(event.target.value)} />
             <p>CPF do comprador</p>
-            <input type="number"></input>
+            <input type="text" onChange={event => onChangeCPF(event.target.value)}/>
           </InformacoeSessao>
             <ButtonReservarAssentos>
-              <Link to="/sucesso" ><button>Reservar Assentos</button></Link>
+              <button onClick={reservarAssentos}>Reservar Assentos</button>
             </ButtonReservarAssentos>
         </EstiloSessaoContainer>
       <Footer filme={assentos.movie} day={assentos.day} />
