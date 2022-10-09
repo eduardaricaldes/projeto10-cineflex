@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 import{ useParams } from"react-router-dom";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 import Assento from "./Assento";
 
@@ -62,11 +63,7 @@ export default function RotaSessao (){
               <Link to="/sucesso" ><button>Reservar Assentos</button></Link>
             </ButtonReservarAssentos>
         </EstiloSessaoContainer>
-      <EstiloSelecionarFilmesfooter>
-          <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg"alt=""></img>
-          <p className="Nomefilme">Enola Homes</p>
-          <p className="Horafilme">horario</p>
-        </EstiloSelecionarFilmesfooter>
+      <Footer filme={assentos.movie} day={assentos.day} />
   </EstiloRotaSessao>
   </>
 
@@ -75,25 +72,6 @@ export default function RotaSessao (){
 
 const EstiloRotaSessao = styled.div`
 
-`
-const EstiloSelecionarFilmesfooter = styled.div`
-  background-color: #c3cfd9;
-  display: flex;
-  align-items: center;
-  margin-top: 18px;
-  padding: 22px 10px 22px 18px;
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      color: #293845;
-      font-size: 20px;
-      margin-left: 14px;
-      flex-direction: column;
-    }
-
-    img{
-      width: 48px;
-    }
 `
 
 const ButtonReservarAssentos = styled.div`

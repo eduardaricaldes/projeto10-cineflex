@@ -3,6 +3,8 @@ import{ useParams } from"react-router-dom";
 import axios from "axios"
 import { useEffect, useState } from "react";
 import Sessoes from "./Sessoes";
+import Footer from "./Footer";
+
 export default function RotaFilme (){
   const {IdFilme}= useParams();
 
@@ -23,40 +25,18 @@ export default function RotaFilme (){
 
   return(
     <>
-    <EstiloSelecionarFilmes>
+      <EstiloSelecionarFilmes>
         <h1 className="titulo">Selecionar Horario</h1>
         <EstiloSelecionarFilmesMain>
           <Sessoes filme={filme} />
         </EstiloSelecionarFilmesMain>
-        <EstiloSelecionarFilmesfooter>
-          {/* <img src={filme.} alt="dsd"> src=</img> */}
-          <p>{filme.title}</p>
-          {/* <p>{}</p> */}
-        </EstiloSelecionarFilmesfooter>
+        <Footer filme={filme}/>
       </EstiloSelecionarFilmes>
     </>
     
   )
 }
 
-const EstiloSelecionarFilmesfooter = styled.div`
-  background-color: #c3cfd9;
-  display: flex;
-  align-items: center;
-  padding: 22px 10px 22px 18px;
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      color: #293845;
-      font-size: 20px;
-      margin-left: 14px;
-    }
-
-    img{
-      width: 48px;
-    }
-
-`
 
 const EstiloSelecionarFilmesMain = styled.div`
   padding: 0px 30px 0px 30px;
