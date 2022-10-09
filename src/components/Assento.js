@@ -11,6 +11,7 @@ export default function Assento({ assento, listaDeAssentos = [], selecionarAssen
       <DivGroup key={assento.id}>
         <EstiloBotaoIndisponivel>
           <input
+            data-identifier="seat"
             className="disabled-checkbox"
             type="checkbox"
             value={assento.id}

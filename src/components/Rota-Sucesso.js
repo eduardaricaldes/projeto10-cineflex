@@ -21,27 +21,33 @@ export default function RotaSucesso(){
       <RotaSucessoMain>
         <RotaSucessoInfomacoes>
           <h3>Filme e Sessão</h3>
-          <p>{filme.title}</p>
-          <p>{sessao.date} {horario}</p>
+          <div className="filme-data" data-identifier="movie-session-infos-reserve-finished">
+            <p>{filme.title}</p>
+            <p>{sessao.date} {horario}</p>
+          </div>
         </RotaSucessoInfomacoes>
         <RotaSucessoInfomacoes>
           <h3>Ingressos</h3>
-          {
-            listaDeAssentos.map((assento) => {
-              return (
-                <p key={assento.id}>Assento {assento.name}</p>
-              )
-            })
-          }
+          <div className="assentos" data-identifier="seat-infos-reserve-finished">
+            {
+              listaDeAssentos.map((assento) => {
+                return (
+                  <p key={assento.id}>Assento {assento.name}</p>
+                )
+              })
+            }
+          </div>
         </RotaSucessoInfomacoes>
         <RotaSucessoInfomacoes>
           <h3>Comprador</h3>
-          <p>NOME: {nome}</p>
-          <p>CPF: {cpf}</p>
+          <div className="informacao-comprador" data-identifier="buyer-infos-reserve-finished">
+            <p>NOME: {nome}</p>
+            <p>CPF: {cpf}</p>
+          </div>
         </RotaSucessoInfomacoes>
       </RotaSucessoMain>
       <ButtonVoltarHome>
-        <Link to="/"><button>Voltar Para Home</button></Link>
+        <Link to="/"><button data-identifier="back-to-home-btn">Voltar Para Home</button></Link>
       </ButtonVoltarHome>
     </RotaSucessoEstilo>
     </>

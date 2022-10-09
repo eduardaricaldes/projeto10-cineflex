@@ -4,8 +4,8 @@ export default function Footer({ filme, day }) {
 
   return (
     <EstiloSelecionarFilmesfooter>
-      <img src={filme?.posterURL} alt=""></img>
-      <EstiloSelecionarFilmeDescricao>
+      <img data-identifier="movie-img-preview" src={filme?.posterURL} alt=""></img>
+      <EstiloSelecionarFilmeDescricao data-identifier="movie-and-session-infos-preview">
         <p className="Nomefilme">{filme?.title}</p>
         {
           day ? (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-function Days(props) {
-  const filme = props.day
+function Days({ day }) {
+  const filme = day
 
   function ShowTimes(props) {
     const sessions = props.showtimes
@@ -10,7 +10,9 @@ function Days(props) {
         {
           sessions.map((session) => {
             return (
-              <Link key={session.id} to={`/sessao/${session.id}`}><input type="button" value={session.name}/></Link>
+              <Link key={session.id} to={`/sessao/${session.id}`}>
+                <button data-identifier="hour-minute-btn">{session.name}</button>
+              </Link>
             )
           })
         }  
@@ -20,15 +22,14 @@ function Days(props) {
 
   return (
     <>
-      <p>{filme.weekday} {filme.date}</p>
+      <p data-identifier="session-date">{filme.weekday} {filme.date}</p>
       <ShowTimes showtimes={filme.showtimes}/>
     </>
   )
 
 }
 
-export default function Sessoes(props) {
-  const filme = props.filme
+export default function Sessoes({ filme }) {
   return (
     <>
     {

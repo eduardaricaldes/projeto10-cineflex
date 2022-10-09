@@ -11,9 +11,7 @@ export default function RotaFilme (){
   const[filme, setFilme]= useState([])
   
   useEffect(()=>{
-
     const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${IdFilme}/showtimes`)
-
     requisicao.then(resposta=>{
       setFilme(resposta.data)
     });
@@ -40,13 +38,12 @@ export default function RotaFilme (){
 
 const EstiloSelecionarFilmesMain = styled.div`
   padding: 0px 30px 0px 30px;
-
     p {
       font-family: 'Roboto', sans-serif;
       color: #293845;
       font-size: 20px;
     }
-    input{
+    button{
       background-color: #E8833A;
       border-radius: 3px;
       border: none;

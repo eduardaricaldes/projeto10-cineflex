@@ -108,15 +108,15 @@ export default function RotaSessao (){
             }
           </DivBotao>
           <Bolinhas>
-            <div className="selecionado">
+            <div className="selecionado"  data-identifier="seat-selected-subtitle">
               <BolinhaVerde/>
               <p>selecionado</p>
             </div>
-            <div className="disponivel">
+            <div className="disponivel" data-identifier="seat-available-subtitle">
               <BolinhaAzul/>
               <p>disponivel</p>
             </div>
-            <div className="indisponivel">
+            <div className="indisponivel" data-identifier="seat-unavailable-subtitle">
               <BolinhaAmarelo/>
               <p>indisponivel</p>
             </div>
@@ -124,12 +124,12 @@ export default function RotaSessao (){
         </EstiloSessaoMain>
           <InformacoeSessao>
             <p>Nome do Comprador</p>
-            <input type="text" onChange={event => onChangeNomeComprador(event.target.value)} />
+            <input data-identifier="buyer-name-input" type="text" onChange={event => onChangeNomeComprador(event.target.value)} />
             <p>CPF do comprador</p>
-            <input type="text" onChange={event => onChangeCPF(event.target.value)}/>
+            <input data-identifier="buyer-cpf-input" type="text" onChange={event => onChangeCPF(event.target.value)}/>
           </InformacoeSessao>
             <ButtonReservarAssentos>
-              <button disabled={!habilitarBotao} onClick={reservarAssentos}>Reservar Assentos</button>
+              <button data-identifier="reservation-btn" disabled={!habilitarBotao} onClick={reservarAssentos}>Reservar Assentos</button>
             </ButtonReservarAssentos>
         </EstiloSessaoContainer>
       <Footer filme={assentos.movie} day={assentos.day} />

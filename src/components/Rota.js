@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios"
-import { useEffect, useState } from "react";
+
+import Filme from "./Filme";
+
 export default function Rota (){
   const [postes,setPostes]= useState([])
+  
   useEffect(()=>{
     const requisição=axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
     requisição.then(resposta=>{
@@ -21,7 +24,16 @@ export default function Rota (){
       <EstiloMain>
         <p>Selecionar Filme</p>
         <EstiloPostes>
-          {postes.map(poste=><Link key={poste.id} to={`/filme/${poste.id}`}><img src={poste.posterURL} alt=""/></Link>)}
+          {
+            postes.map(post=> {
+              return (
+                <Filme
+                  key={post.id}
+                  id={post.id}
+                  posterURL={post.posterURL}
+                />
+              )
+            })}
         </EstiloPostes>
       </EstiloMain>
     </>
