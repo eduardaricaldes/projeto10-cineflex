@@ -13,6 +13,7 @@ export default function RotaSessao (){
   const [listaDeAssentos, setListaDeAssentos] = useState([]);
   const [cpf, setCPF] = useState('');
   const [nome, setNome] = useState('');
+  const [habilitarBotao, setHabilitarBotao] = useState(false);
 
 
   useEffect(()=>{
@@ -27,6 +28,14 @@ export default function RotaSessao (){
 
      })
   }, [sessaoId])
+
+  useEffect(()=>{
+    if(listaDeAssentos.length > 0 && cpf !== '' && nome !== '') {
+      setHabilitarBotao(true)
+    }else {
+      setHabilitarBotao(false);
+    }
+  }, [cpf, listaDeAssentos.length, nome])
 
   function selecionarAssentos(event) {
     const checkbox = event.target
@@ -120,7 +129,7 @@ export default function RotaSessao (){
             <input type="text" onChange={event => onChangeCPF(event.target.value)}/>
           </InformacoeSessao>
             <ButtonReservarAssentos>
-              <button onClick={reservarAssentos}>Reservar Assentos</button>
+              <button disabled={!habilitarBotao} onClick={reservarAssentos}>Reservar Assentos</button>
             </ButtonReservarAssentos>
         </EstiloSessaoContainer>
       <Footer filme={assentos.movie} day={assentos.day} />

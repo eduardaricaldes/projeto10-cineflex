@@ -41,7 +41,7 @@ export default function RotaSucesso(){
         </RotaSucessoInfomacoes>
       </RotaSucessoMain>
       <ButtonVoltarHome>
-        <Link to="/"><button>Reservar Assentos</button></Link>
+        <Link to="/"><button>Voltar Para Home</button></Link>
       </ButtonVoltarHome>
     </RotaSucessoEstilo>
     </>
