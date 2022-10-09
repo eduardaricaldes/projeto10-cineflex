@@ -1,12 +1,22 @@
 import styled from "styled-components";
 
 export default function Assento({ assento, listaDeAssentos = [], selecionarAssentos = () => {} }) {
+  
+  function assentoIndisponivel(name) {
+    alert(`Assento ${name} está indisponivel`)
+  }
 
   if(!assento.isAvailable) {
     return (
       <DivGroup key={assento.id}>
         <EstiloBotaoIndisponivel>
-          <input disabled type="checkbox" value={assento.id}/>
+          <input
+            className="disabled-checkbox"
+            type="checkbox"
+            value={assento.id}
+            name={assento.name}
+            onClick={event => assentoIndisponivel(event.target.name)}
+          />
           <span>{assento.name}</span>
         </EstiloBotaoIndisponivel>
       </DivGroup>
@@ -79,7 +89,7 @@ const EstiloBotaoIndisponivel = styled.label`
     position: absolute;
     display: none;
   }
-  input[type=checkbox]:disabled + span {
+  .disabled-checkbox + span {
     background-color:#FBE192;
     border-color: #F7C52B;
     color: #000;
