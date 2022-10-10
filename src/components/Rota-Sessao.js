@@ -255,4 +255,6 @@ const DivBotao = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
 `
