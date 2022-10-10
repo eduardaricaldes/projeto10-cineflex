@@ -16,11 +16,11 @@ export default function RotaSucesso(){
     <>
     <RotaSucessoEstilo>
       <RotaSucessoTop>
-         <h2>Pedido Feito com Sucesso!</h2>
+         <h2>Pedido feito com sucesso!</h2>
       </RotaSucessoTop>
       <RotaSucessoMain>
         <RotaSucessoInfomacoes>
-          <h3>Filme e Sessão</h3>
+          <h3>Filme e sessão</h3>
           <div className="filme-data" data-identifier="movie-session-infos-reserve-finished">
             <p>{filme.title}</p>
             <p>{sessao.date} {horario}</p>
@@ -67,33 +67,47 @@ const ButtonVoltarHome = styled.div`
       font-family: 'Roboto';
       width: 200px;
       height: 42px;
+      font-size: 18px;
+      font-weight: 300;
     }
 `
 const RotaSucessoInfomacoes = styled.div`
+  margin-bottom: 40px;
   h3{
     font-family: 'Roboto', sans-serif;
     color: #293845;
     font-size: 24px;
     margin-left: 14px;
+    font-weight: bold;
+    margin-bottom: 14px;
   }
 
   p{
     font-family: 'Roboto', sans-serif;
     color: #293845;
-    font-size: 20px;
+    font-size: 22px;
     margin-left: 14px;
+    font-weight: 300;
+    margin-bottom: 5px;
   }
 `
-const RotaSucessoMain = styled.div``
-const RotaSucessoEstilo = styled.div``
+const RotaSucessoMain = styled.div`
+  margin-bottom: 70px;
+`
+const RotaSucessoEstilo = styled.div`
+padding: 0px 30px 0px 30px;
+`
 
 const RotaSucessoTop = styled.div`
   display: flex;
-  align-items: center;
+  text-align: center;
   flex-direction: column;
+  justify-content: center;
+  padding: 40px 80px ;
     h2{
       font-family: 'Roboto', sans-serif;
-      font-size: 20px;
+      font-size: 24px;
       color: #247A6B;
+      font-weight: bold;
      }
 `

@@ -22,8 +22,8 @@ export default function Rota (){
   return (
     <>
       <EstiloMain>
-        <p>Selecionar Filme</p>
-        <EstiloPostes>
+        <h2>Selecionar Filme</h2>
+        <Postes>
           {
             postes.map(post=> {
               return (
@@ -33,38 +33,33 @@ export default function Rota (){
                   posterURL={post.posterURL}
                 />
               )
-            })}
-        </EstiloPostes>
+            })
+          }
+        </Postes>
       </EstiloMain>
     </>
   )
 }
 
-const EstiloPostes = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  img {
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-right: 46px;
-    margin-bottom: 28px;
-  }
+
+const Postes = styled.div`
+ display: flex;
+ flex-wrap: wrap;
 `
 
 const EstiloMain = styled.div`
   padding: 0px 30px 0px 30px;
-    p {
+  margin-bottom: 50px;
+  margin-top:50px;
+    h2 {
       font-family: 'Roboto', sans-serif;
       color: #293845;
-      font-size: 20px;
+      font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top:50px;
       margin-bottom: 50px;
+      font-weight: 300;
     }
 
 `

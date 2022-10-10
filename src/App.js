@@ -24,11 +24,6 @@ export default function App() {
   )
 }
 
-
-
-
-
-
 const EstiloTop = styled.div`
   display: flex;
   align-items: center;

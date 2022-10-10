@@ -8,7 +8,7 @@ export default function Assento({ assento, listaDeAssentos = [], selecionarAssen
 
   if(!assento.isAvailable) {
     return (
-      <DivGroup key={assento.id}>
+      <DivGroup className="disabled-group" key={assento.id}>
         <EstiloBotaoIndisponivel>
           <input
             data-identifier="seat"
@@ -50,6 +50,10 @@ const DivGroup = styled.div`
   margin-right: 8px;
   margin-top: 18px;
   float: left;
+
+  &.disabled-group {
+    border-color: #F7C52B;
+  }
 `
 
 const EstiloBotao = styled.label`
